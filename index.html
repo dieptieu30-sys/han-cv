@@ -1,0 +1,1472 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bùi Khả Hân – CV Cá Nhân</title>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    :root {
+      --blue-dark:  #0d2f6e;
+      --blue-main:  #1a56db;
+      --blue-mid:   #2d7dd2;
+      --blue-light: #60a5fa;
+      --blue-pale:  #dbeafe;
+      --white:      #ffffff;
+      --gray-50:    #f8faff;
+      --gray-100:   #f1f5f9;
+      --gray-200:   #e2e8f0;
+      --gray-500:   #64748b;
+      --gray-700:   #334155;
+      --gray-900:   #0f172a;
+      --shadow-sm:  0 1px 3px rgba(13,47,110,.08);
+      --shadow-md:  0 4px 16px rgba(13,47,110,.12);
+      --shadow-lg:  0 8px 32px rgba(13,47,110,.18);
+      --radius:     14px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Be Vietnam Pro', sans-serif;
+      background: var(--gray-50);
+      color: var(--gray-900);
+      line-height: 1.65;
+    }
+
+    /* ===== SCROLLBAR ===== */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--gray-100); }
+    ::-webkit-scrollbar-thumb { background: var(--blue-light); border-radius: 99px; }
+
+    /* ===== NAVBAR ===== */
+    #navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+      background: rgba(255,255,255,.85);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--gray-200);
+      padding: 0 5%;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+      transition: box-shadow .3s;
+    }
+    #navbar.scrolled { box-shadow: var(--shadow-md); }
+    .nav-brand {
+      font-weight: 800; font-size: 1.25rem;
+      background: linear-gradient(135deg, var(--blue-dark), var(--blue-mid));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 8px; list-style: none; }
+    .nav-links a {
+      padding: 6px 14px; border-radius: 99px; font-size: .9rem; font-weight: 500;
+      color: var(--gray-700); text-decoration: none; transition: all .25s;
+    }
+    .nav-links a:hover { background: var(--blue-pale); color: var(--blue-main); }
+    .nav-cta {
+      display: flex; gap: 10px; align-items: center;
+    }
+    .btn-outline {
+      padding: 8px 18px; border-radius: 99px; border: 2px solid var(--blue-main);
+      color: var(--blue-main); font-weight: 600; font-size: .85rem;
+      cursor: pointer; background: transparent; text-decoration: none;
+      transition: all .25s;
+    }
+    .btn-outline:hover { background: var(--blue-main); color: #fff; }
+    .btn-solid {
+      padding: 8px 18px; border-radius: 99px; border: none;
+      background: linear-gradient(135deg, var(--blue-main), var(--blue-mid));
+      color: #fff; font-weight: 600; font-size: .85rem;
+      cursor: pointer; text-decoration: none; transition: all .25s;
+    }
+    .btn-solid:hover { box-shadow: 0 4px 16px rgba(26,86,219,.4); transform: translateY(-1px); }
+    .hamburger { display: none; font-size: 1.4rem; cursor: pointer; color: var(--gray-700); background: none; border: none; }
+
+    /* ===== HERO ===== */
+    #hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0d2f6e 0%, #1a56db 55%, #2d7dd2 100%);
+      display: flex; align-items: center; justify-content: center;
+      padding: 100px 5% 60px;
+      position: relative; overflow: hidden;
+    }
+    #hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 70% 50%, rgba(96,165,250,.18) 0%, transparent 60%);
+    }
+    .hero-inner {
+      max-width: 1100px; width: 100%;
+      display: flex; align-items: center; gap: 64px;
+      position: relative; z-index: 1;
+    }
+    .hero-avatar-wrap {
+      flex-shrink: 0;
+      width: 220px; height: 220px;
+      border-radius: 50%;
+      padding: 4px;
+      background: linear-gradient(135deg, #60a5fa, #fff, #2d7dd2);
+      box-shadow: 0 0 0 8px rgba(255,255,255,.15), var(--shadow-lg);
+    }
+    .hero-avatar-wrap img {
+      width: 100%; height: 100%; border-radius: 50%; object-fit: cover;
+      border: 4px solid #fff;
+    }
+    .hero-text { color: #fff; flex: 1; }
+    .hero-greeting { font-size: 1rem; font-weight: 500; opacity: .8; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
+    .hero-name { font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 800; line-height: 1.1; margin-bottom: 12px; }
+    .hero-title { font-size: 1.15rem; font-weight: 500; opacity: .9; margin-bottom: 16px; }
+    .typewriter {
+      display: inline-block;
+      border-right: 2px solid rgba(255,255,255,.7);
+      white-space: nowrap; overflow: hidden;
+      animation: blink .7s step-end infinite;
+      max-width: 100%;
+    }
+    @keyframes blink { 50% { border-color: transparent; } }
+    .hero-bio { font-size: .95rem; opacity: .85; max-width: 480px; line-height: 1.7; margin-bottom: 28px; }
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 28px; }
+    .hero-btns .btn-white {
+      padding: 11px 26px; border-radius: 99px; background: #fff;
+      color: var(--blue-main); font-weight: 700; font-size: .9rem;
+      text-decoration: none; transition: all .25s;
+      box-shadow: 0 4px 16px rgba(0,0,0,.12);
+    }
+    .hero-btns .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.18); }
+    .hero-btns .btn-ghost {
+      padding: 11px 26px; border-radius: 99px;
+      border: 2px solid rgba(255,255,255,.6);
+      color: #fff; font-weight: 700; font-size: .9rem;
+      text-decoration: none; transition: all .25s; background: rgba(255,255,255,.1);
+    }
+    .hero-btns .btn-ghost:hover { background: rgba(255,255,255,.25); border-color: #fff; }
+    .hero-socials { display: flex; gap: 12px; }
+    .hero-socials a {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: rgba(255,255,255,.15);
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 1rem; text-decoration: none;
+      transition: all .25s; border: 1px solid rgba(255,255,255,.25);
+    }
+    .hero-socials a:hover { background: rgba(255,255,255,.3); transform: translateY(-2px); }
+
+    /* ===== SECTION COMMON ===== */
+    section { padding: 80px 5%; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--blue-pale); color: var(--blue-main);
+      font-size: .8rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; padding: 6px 16px; border-radius: 99px;
+      margin-bottom: 12px;
+    }
+    .section-title { font-size: clamp(1.6rem, 3.5vw, 2.2rem); font-weight: 800; color: var(--blue-dark); margin-bottom: 8px; }
+    .section-sub { color: var(--gray-500); max-width: 540px; margin-bottom: 40px; }
+    .divider { width: 60px; height: 4px; background: linear-gradient(90deg, var(--blue-main), var(--blue-light)); border-radius: 99px; margin-bottom: 16px; }
+
+    /* ===== ABOUT ===== */
+    #about { background: #fff; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .about-img-wrap {
+      border-radius: 20px; overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+    }
+    .about-img-wrap img { width: 100%; display: block; }
+    .about-img-badge {
+      position: absolute; bottom: 20px; left: 20px;
+      background: linear-gradient(135deg, var(--blue-main), var(--blue-dark));
+      color: #fff; border-radius: 12px; padding: 12px 20px;
+      font-weight: 700;
+    }
+    .about-img-badge span { display: block; font-size: 1.8rem; line-height: 1; }
+    .about-img-badge small { font-size: .78rem; opacity: .85; }
+    .about-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-top: 28px; }
+    .stat-card {
+      background: var(--gray-50); border-radius: var(--radius); padding: 20px 16px;
+      text-align: center; border: 1px solid var(--gray-200);
+      transition: all .3s;
+    }
+    .stat-card:hover { border-color: var(--blue-light); box-shadow: var(--shadow-md); transform: translateY(-2px); }
+    .stat-card .num { font-size: 2rem; font-weight: 800; color: var(--blue-main); }
+    .stat-card .label { font-size: .8rem; color: var(--gray-500); margin-top: 4px; }
+
+    /* ===== TIMELINE ===== */
+    #timeline { background: var(--gray-50); }
+    .timeline-filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 40px; }
+    .tl-filter {
+      padding: 7px 18px; border-radius: 99px; border: 2px solid var(--gray-200);
+      background: #fff; font-size: .85rem; font-weight: 600; cursor: pointer;
+      transition: all .25s; color: var(--gray-700);
+    }
+    .tl-filter.active, .tl-filter:hover { background: var(--blue-main); color: #fff; border-color: var(--blue-main); }
+    .timeline-list { position: relative; padding-left: 32px; }
+    .timeline-list::before {
+      content: ''; position: absolute; left: 14px; top: 0; bottom: 0;
+      width: 2px; background: linear-gradient(180deg, var(--blue-main), var(--blue-pale));
+    }
+    .tl-item {
+      position: relative; margin-bottom: 36px;
+      animation: fadeSlide .5s ease both;
+    }
+    @keyframes fadeSlide { from { opacity: 0; transform: translateX(-20px); } to { opacity: 1; transform: translateX(0); } }
+    .tl-dot {
+      position: absolute; left: -32px; top: 6px;
+      width: 16px; height: 16px; border-radius: 50%;
+      background: var(--blue-main); border: 3px solid #fff;
+      box-shadow: 0 0 0 3px var(--blue-light);
+    }
+    .tl-card {
+      background: #fff; border-radius: var(--radius); padding: 20px 24px;
+      box-shadow: var(--shadow-sm); border: 1px solid var(--gray-200);
+      transition: all .3s;
+    }
+    .tl-card:hover { box-shadow: var(--shadow-md); border-color: var(--blue-light); }
+    .tl-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; flex-wrap: wrap; }
+    .tl-year {
+      background: var(--blue-pale); color: var(--blue-main);
+      font-size: .78rem; font-weight: 700; padding: 3px 10px; border-radius: 99px;
+    }
+    .tl-cat {
+      font-size: .78rem; font-weight: 600; padding: 3px 10px; border-radius: 99px;
+    }
+    .cat-education { background: #d1fae5; color: #065f46; }
+    .cat-work      { background: #dbeafe; color: #1e40af; }
+    .cat-award     { background: #fef3c7; color: #92400e; }
+    .cat-activity  { background: #ede9fe; color: #5b21b6; }
+    .tl-title { font-size: 1rem; font-weight: 700; color: var(--gray-900); margin-bottom: 4px; }
+    .tl-org   { font-size: .88rem; color: var(--blue-mid); font-weight: 600; margin-bottom: 6px; }
+    .tl-desc  { font-size: .88rem; color: var(--gray-500); }
+
+    /* ===== SKILLS ===== */
+    #skills { background: #fff; }
+    .skills-tabs { display: flex; gap: 8px; margin-bottom: 32px; flex-wrap: wrap; }
+    .sk-tab {
+      padding: 8px 20px; border-radius: 99px; border: 2px solid var(--gray-200);
+      background: transparent; font-size: .87rem; font-weight: 600; cursor: pointer;
+      transition: all .25s; color: var(--gray-700);
+    }
+    .sk-tab.active { background: var(--blue-main); color: #fff; border-color: var(--blue-main); }
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
+    .skill-card {
+      background: var(--gray-50); border: 1px solid var(--gray-200);
+      border-radius: var(--radius); padding: 20px;
+      transition: all .3s;
+    }
+    .skill-card:hover { border-color: var(--blue-light); box-shadow: var(--shadow-md); transform: translateY(-2px); }
+    .skill-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+    .skill-name { font-weight: 700; font-size: .9rem; color: var(--gray-900); }
+    .skill-pct { font-size: .8rem; font-weight: 700; color: var(--blue-main); }
+    .skill-bar { height: 6px; background: var(--gray-200); border-radius: 99px; overflow: hidden; }
+    .skill-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--blue-main), var(--blue-light));
+      border-radius: 99px;
+      width: 0;
+      transition: width 1.2s cubic-bezier(.4,0,.2,1);
+    }
+
+    /* ===== PROJECTS ===== */
+    #projects { background: var(--gray-50); }
+    .proj-filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 32px; }
+    .proj-filter {
+      padding: 7px 18px; border-radius: 99px; border: 2px solid var(--gray-200);
+      background: #fff; font-size: .85rem; font-weight: 600; cursor: pointer;
+      transition: all .25s; color: var(--gray-700);
+    }
+    .proj-filter.active, .proj-filter:hover { background: var(--blue-main); color: #fff; border-color: var(--blue-main); }
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px; }
+    .proj-card {
+      background: #fff; border-radius: var(--radius); overflow: hidden;
+      box-shadow: var(--shadow-sm); border: 1px solid var(--gray-200);
+      transition: all .3s; display: flex; flex-direction: column;
+    }
+    .proj-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); border-color: var(--blue-light); }
+    .proj-thumb {
+      width: 100%; height: 190px; object-fit: cover;
+      background: linear-gradient(135deg, var(--blue-pale), #e0f2fe);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3rem; color: var(--blue-light);
+    }
+    .proj-thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .proj-body { padding: 20px; flex: 1; display: flex; flex-direction: column; }
+    .proj-cat {
+      font-size: .75rem; font-weight: 700; color: var(--blue-main);
+      text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;
+    }
+    .proj-title { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+    .proj-desc { font-size: .87rem; color: var(--gray-500); margin-bottom: 12px; flex: 1; }
+    .proj-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+    .proj-tag {
+      background: var(--blue-pale); color: var(--blue-main);
+      font-size: .75rem; font-weight: 600; padding: 3px 10px; border-radius: 99px;
+    }
+    .proj-links { display: flex; gap: 10px; }
+    .proj-links a {
+      display: flex; align-items: center; gap: 5px;
+      font-size: .82rem; font-weight: 600;
+      padding: 7px 14px; border-radius: 8px; text-decoration: none; transition: all .25s;
+    }
+    .proj-links .link-demo { background: var(--blue-main); color: #fff; }
+    .proj-links .link-demo:hover { background: var(--blue-dark); }
+    .proj-links .link-code { background: var(--gray-100); color: var(--gray-700); }
+    .proj-links .link-code:hover { background: var(--gray-200); }
+
+    /* ===== CERTS ===== */
+    #certs { background: #fff; }
+    .certs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
+    .cert-card {
+      background: var(--gray-50); border: 1px solid var(--gray-200);
+      border-radius: var(--radius); padding: 22px 20px;
+      display: flex; gap: 16px; align-items: flex-start;
+      transition: all .3s;
+    }
+    .cert-card:hover { border-color: var(--blue-light); box-shadow: var(--shadow-md); transform: translateY(-2px); }
+    .cert-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      background: linear-gradient(135deg, var(--blue-main), var(--blue-mid));
+      color: #fff; font-size: 1.3rem;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .cert-info {}
+    .cert-name { font-weight: 700; font-size: .93rem; color: var(--gray-900); margin-bottom: 4px; }
+    .cert-org  { font-size: .82rem; color: var(--blue-mid); font-weight: 600; margin-bottom: 4px; }
+    .cert-date { font-size: .78rem; color: var(--gray-500); }
+
+    /* ===== CONTACT ===== */
+    #contact { background: linear-gradient(135deg, #0d2f6e 0%, #1a56db 100%); color: #fff; }
+    #contact .section-title { color: #fff; }
+    #contact .section-sub { color: rgba(255,255,255,.75); }
+    #contact .section-badge { background: rgba(255,255,255,.15); color: #fff; }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 48px; }
+    .contact-info-list { display: flex; flex-direction: column; gap: 16px; margin-bottom: 28px; }
+    .contact-info-item { display: flex; align-items: center; gap: 14px; }
+    .ci-icon {
+      width: 44px; height: 44px; border-radius: 12px;
+      background: rgba(255,255,255,.15); color: #fff; font-size: 1rem;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .ci-label { font-size: .78rem; opacity: .7; margin-bottom: 2px; }
+    .ci-val   { font-weight: 600; font-size: .93rem; }
+    .contact-form {
+      background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2);
+      border-radius: 20px; padding: 32px; backdrop-filter: blur(10px);
+    }
+    .form-group { margin-bottom: 16px; }
+    .form-group label { display: block; font-size: .85rem; font-weight: 600; margin-bottom: 6px; opacity: .9; }
+    .form-group input, .form-group textarea {
+      width: 100%; padding: 12px 16px; border-radius: 10px;
+      border: 1px solid rgba(255,255,255,.25); background: rgba(255,255,255,.12);
+      color: #fff; font-family: inherit; font-size: .9rem;
+      outline: none; transition: border .25s;
+    }
+    .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,.5); }
+    .form-group input:focus, .form-group textarea:focus { border-color: rgba(255,255,255,.6); }
+    .form-group textarea { min-height: 110px; resize: vertical; }
+    .btn-send {
+      width: 100%; padding: 13px; border-radius: 10px; border: none;
+      background: #fff; color: var(--blue-main); font-weight: 700; font-size: 1rem;
+      cursor: pointer; transition: all .25s;
+    }
+    .btn-send:hover { background: var(--blue-pale); box-shadow: 0 4px 20px rgba(0,0,0,.15); }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--gray-900); color: rgba(255,255,255,.7);
+      text-align: center; padding: 28px 5%; font-size: .85rem;
+    }
+    footer strong { color: #fff; }
+    footer .quote { font-style: italic; margin-top: 6px; color: var(--blue-light); }
+
+    /* ===== ADMIN BUTTON ===== */
+    .admin-fab {
+      position: fixed; bottom: 28px; right: 28px; z-index: 998;
+      width: 52px; height: 52px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue-dark), var(--blue-main));
+      color: #fff; font-size: 1.2rem; border: none; cursor: pointer;
+      box-shadow: var(--shadow-lg); transition: all .3s;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .admin-fab:hover { transform: scale(1.1) rotate(15deg); box-shadow: 0 8px 32px rgba(26,86,219,.5); }
+
+    /* ===== ADMIN MODAL ===== */
+    .modal-overlay {
+      display: none; position: fixed; inset: 0; z-index: 9999;
+      background: rgba(13,23,48,.7); backdrop-filter: blur(6px);
+      align-items: center; justify-content: center; padding: 20px;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal {
+      background: #fff; border-radius: 20px; width: 100%; max-width: 520px;
+      box-shadow: 0 24px 80px rgba(13,47,110,.25);
+      overflow: hidden; animation: popIn .3s cubic-bezier(.4,0,.2,1);
+    }
+    @keyframes popIn { from { opacity: 0; transform: scale(.9); } to { opacity: 1; transform: scale(1); } }
+    .modal-header {
+      background: linear-gradient(135deg, var(--blue-dark), var(--blue-main));
+      color: #fff; padding: 22px 28px; display: flex; align-items: center; gap: 12px;
+    }
+    .modal-header i { font-size: 1.3rem; }
+    .modal-header h3 { font-size: 1.1rem; font-weight: 700; }
+    .modal-body { padding: 28px; }
+    .modal-body input {
+      width: 100%; padding: 12px 16px; border: 2px solid var(--gray-200);
+      border-radius: 10px; font-size: 1rem; outline: none;
+      transition: border .25s; font-family: inherit; margin-top: 8px;
+    }
+    .modal-body input:focus { border-color: var(--blue-main); }
+    .modal-footer { padding: 0 28px 24px; display: flex; gap: 10px; }
+    .modal-footer button {
+      flex: 1; padding: 12px; border-radius: 10px; font-weight: 700;
+      font-size: .95rem; cursor: pointer; border: none; transition: all .25s;
+    }
+    .btn-cancel { background: var(--gray-100); color: var(--gray-700); }
+    .btn-cancel:hover { background: var(--gray-200); }
+    .btn-login-submit { background: var(--blue-main); color: #fff; }
+    .btn-login-submit:hover { background: var(--blue-dark); }
+
+    /* ===== ADMIN PANEL ===== */
+    #adminPanel {
+      display: none; position: fixed; inset: 0; z-index: 10000;
+      background: var(--gray-50); overflow-y: auto;
+    }
+    .ap-header {
+      background: linear-gradient(135deg, var(--blue-dark), var(--blue-main));
+      color: #fff; padding: 18px 5%;
+      display: flex; align-items: center; justify-content: space-between;
+      position: sticky; top: 0; z-index: 10;
+    }
+    .ap-header h2 { font-size: 1.15rem; font-weight: 700; }
+    .ap-header-btns { display: flex; gap: 10px; }
+    .ap-btn-save {
+      padding: 9px 22px; border-radius: 99px; border: none;
+      background: #fff; color: var(--blue-main); font-weight: 700; font-size: .87rem;
+      cursor: pointer; transition: all .25s;
+    }
+    .ap-btn-save:hover { background: var(--blue-pale); }
+    .ap-btn-close {
+      padding: 9px 18px; border-radius: 99px; border: 2px solid rgba(255,255,255,.4);
+      background: transparent; color: #fff; font-weight: 600; font-size: .87rem;
+      cursor: pointer; transition: all .25s;
+    }
+    .ap-btn-close:hover { background: rgba(255,255,255,.15); }
+    .ap-body { max-width: 960px; margin: 0 auto; padding: 32px 5%; }
+    .ap-tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 32px; }
+    .ap-tab {
+      padding: 9px 20px; border-radius: 10px; border: 2px solid var(--gray-200);
+      background: #fff; font-size: .87rem; font-weight: 600; cursor: pointer;
+      transition: all .25s; color: var(--gray-700);
+    }
+    .ap-tab.active { background: var(--blue-main); color: #fff; border-color: var(--blue-main); }
+    .ap-section { display: none; }
+    .ap-section.active { display: block; }
+    .ap-card {
+      background: #fff; border: 1px solid var(--gray-200); border-radius: var(--radius);
+      padding: 24px; margin-bottom: 20px;
+    }
+    .ap-card h4 { font-size: .95rem; font-weight: 700; color: var(--blue-dark); margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid var(--blue-pale); }
+    .ap-field { margin-bottom: 14px; }
+    .ap-field label { display: block; font-size: .82rem; font-weight: 600; color: var(--gray-700); margin-bottom: 5px; }
+    .ap-field input, .ap-field textarea, .ap-field select {
+      width: 100%; padding: 10px 14px; border: 2px solid var(--gray-200);
+      border-radius: 8px; font-size: .9rem; font-family: inherit; outline: none;
+      transition: border .25s; color: var(--gray-900); background: var(--gray-50);
+    }
+    .ap-field input:focus, .ap-field textarea:focus, .ap-field select:focus { border-color: var(--blue-main); background: #fff; }
+    .ap-field textarea { min-height: 90px; resize: vertical; }
+    .ap-field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .ap-avatar-wrap { display: flex; align-items: center; gap: 20px; }
+    .ap-avatar-preview {
+      width: 90px; height: 90px; border-radius: 50%; object-fit: cover;
+      border: 3px solid var(--blue-light); flex-shrink: 0;
+    }
+    .ap-avatar-actions { display: flex; flex-direction: column; gap: 8px; }
+    .btn-upload {
+      padding: 9px 18px; border-radius: 8px; background: var(--blue-main);
+      color: #fff; font-weight: 600; font-size: .85rem;
+      cursor: pointer; border: none; transition: all .25s;
+    }
+    .btn-upload:hover { background: var(--blue-dark); }
+    /* List items in admin */
+    .ap-list-item {
+      background: var(--gray-50); border: 1px solid var(--gray-200);
+      border-radius: 10px; padding: 16px; margin-bottom: 12px; position: relative;
+    }
+    .ap-item-actions { display: flex; gap: 8px; margin-top: 12px; }
+    .btn-remove {
+      padding: 6px 14px; border-radius: 7px; background: #fee2e2;
+      color: #dc2626; font-size: .8rem; font-weight: 600;
+      border: none; cursor: pointer; transition: all .25s;
+    }
+    .btn-remove:hover { background: #fca5a5; }
+    .btn-add-item {
+      display: flex; align-items: center; gap: 6px;
+      padding: 10px 20px; border-radius: 10px; border: 2px dashed var(--blue-light);
+      background: var(--blue-pale); color: var(--blue-main); font-weight: 600; font-size: .87rem;
+      cursor: pointer; width: 100%; justify-content: center; transition: all .25s;
+    }
+    .btn-add-item:hover { background: #bfdbfe; border-style: solid; }
+    .ap-success {
+      position: fixed; top: 80px; right: 20px; z-index: 11000;
+      background: #10b981; color: #fff; padding: 14px 22px;
+      border-radius: 12px; font-weight: 700; font-size: .9rem;
+      box-shadow: 0 4px 20px rgba(16,185,129,.3);
+      animation: slideIn .4s ease;
+    }
+    @keyframes slideIn { from { opacity: 0; transform: translateX(40px); } to { opacity: 1; transform: translateX(0); } }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .hero-inner { flex-direction: column; text-align: center; gap: 32px; }
+      .hero-avatar-wrap { width: 170px; height: 170px; }
+      .hero-btns, .hero-socials { justify-content: center; }
+      .hero-bio { margin: 0 auto 24px; }
+      .about-grid { grid-template-columns: 1fr; gap: 32px; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .ap-field-row { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: block; }
+      .nav-links.open {
+        display: flex; flex-direction: column;
+        position: absolute; top: 64px; left: 0; right: 0;
+        background: #fff; padding: 16px; gap: 4px;
+        border-bottom: 1px solid var(--gray-200);
+        box-shadow: var(--shadow-md);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <a class="nav-brand" href="#hero" id="navBrand">Bùi Khả Hân</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">Giới thiệu</a></li>
+    <li><a href="#timeline">Hành trình</a></li>
+    <li><a href="#skills">Kỹ năng</a></li>
+    <li><a href="#projects">Dự án</a></li>
+    <li><a href="#certs">Chứng chỉ</a></li>
+    <li><a href="#contact">Liên hệ</a></li>
+  </ul>
+  <div class="nav-cta">
+    <a class="btn-outline" id="navDownloadCV" href="#" target="_blank">
+      <i class="fa fa-download"></i> Tải CV
+    </a>
+    <button class="hamburger" id="hamburger"><i class="fa fa-bars"></i></button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-avatar-wrap">
+      <img id="heroImg" src="assets/avatar.jpg" alt="Bùi Khả Hân"/>
+    </div>
+    <div class="hero-text">
+      <p class="hero-greeting">👋 Xin chào, tôi là</p>
+      <h1 class="hero-name" id="heroName">Bùi Khả Hân</h1>
+      <p class="hero-title"><span class="typewriter" id="typewriterEl"></span></p>
+      <p class="hero-bio" id="heroBio">Sinh viên đam mê học hỏi và phát triển bản thân. Luôn nỗ lực không ngừng để mang lại giá trị tốt nhất trong mọi công việc và cuộc sống.</p>
+      <div class="hero-btns">
+        <a class="btn-white" href="#contact">Liên hệ ngay</a>
+        <a class="btn-ghost" href="#projects">Xem dự án</a>
+      </div>
+      <div class="hero-socials" id="heroSocials"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-img-wrap">
+        <img id="aboutImg" src="assets/avatar.jpg" alt="About"/>
+        <div class="about-img-badge">
+          <span id="badgeNum">1+</span>
+          <small id="badgeLabel">Năm học tập</small>
+        </div>
+      </div>
+      <div>
+        <div class="section-badge"><i class="fa fa-user"></i> Về tôi</div>
+        <h2 class="section-title">Giới thiệu bản thân</h2>
+        <div class="divider"></div>
+        <p id="aboutText" style="color:var(--gray-500);margin-bottom:24px;line-height:1.8;">
+          Tôi là Bùi Khả Hân, một sinh viên năng động với niềm đam mê học hỏi và khám phá những điều mới. Tôi luôn hướng đến sự phát triển toàn diện cả về chuyên môn lẫn kỹ năng mềm.
+        </p>
+        <div class="about-stats" id="aboutStats"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section id="timeline">
+  <div class="section-inner">
+    <div class="section-badge"><i class="fa fa-route"></i> Hành trình</div>
+    <h2 class="section-title">Hành trình cuộc sống & Sự nghiệp</h2>
+    <div class="divider"></div>
+    <p class="section-sub">Những cột mốc đánh dấu sự trưởng thành và phát triển của tôi qua từng năm.</p>
+    <div class="timeline-filters" id="timelineFilters"></div>
+    <div class="timeline-list" id="timelineList"></div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-inner">
+    <div class="section-badge"><i class="fa fa-star"></i> Kỹ năng</div>
+    <h2 class="section-title">Kỹ năng & Chuyên môn</h2>
+    <div class="divider"></div>
+    <div class="skills-tabs" id="skillsTabs"></div>
+    <div class="skills-grid" id="skillsGrid"></div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-inner">
+    <div class="section-badge"><i class="fa fa-layer-group"></i> Dự án</div>
+    <h2 class="section-title">Dự án tiêu biểu</h2>
+    <div class="divider"></div>
+    <div class="proj-filters" id="projFilters"></div>
+    <div class="projects-grid" id="projectsGrid"></div>
+  </div>
+</section>
+
+<!-- CERTS -->
+<section id="certs">
+  <div class="section-inner">
+    <div class="section-badge"><i class="fa fa-certificate"></i> Chứng chỉ</div>
+    <h2 class="section-title">Chứng chỉ & Giải thưởng</h2>
+    <div class="divider"></div>
+    <div class="certs-grid" id="certsGrid"></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-badge"><i class="fa fa-envelope"></i> Liên hệ</div>
+    <h2 class="section-title">Liên hệ & Tuyển dụng</h2>
+    <div class="divider" style="background:rgba(255,255,255,.5)"></div>
+    <p class="section-sub">Hãy kết nối với tôi — tôi luôn sẵn sàng lắng nghe và hợp tác!</p>
+    <div class="contact-grid">
+      <div>
+        <div class="contact-info-list" id="contactInfoList"></div>
+      </div>
+      <div class="contact-form">
+        <div class="form-group">
+          <label>Họ và tên</label>
+          <input type="text" placeholder="Nguyễn Văn A"/>
+        </div>
+        <div class="form-group">
+          <label>Email của bạn</label>
+          <input type="email" placeholder="example@email.com"/>
+        </div>
+        <div class="form-group">
+          <label>Lời nhắn</label>
+          <textarea placeholder="Tôi muốn kết nối với bạn về..."></textarea>
+        </div>
+        <button class="btn-send" onclick="alert('Cảm ơn bạn đã liên hệ! Tôi sẽ phản hồi sớm nhất.')">
+          <i class="fa fa-paper-plane"></i> Gửi tin nhắn
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 <strong id="footerName">Bùi Khả Hân</strong>. All rights reserved.</p>
+  <p class="quote" id="footerQuote">"Hành trình ngàn dặm bắt đầu từ một bước chân."</p>
+</footer>
+
+<!-- ADMIN FAB -->
+<button class="admin-fab" id="adminFab" title="Trang quản trị">
+  <i class="fa fa-gear"></i>
+</button>
+
+<!-- LOGIN MODAL -->
+<div class="modal-overlay" id="loginModal">
+  <div class="modal">
+    <div class="modal-header">
+      <i class="fa fa-lock"></i>
+      <h3>Đăng nhập trang Quản trị</h3>
+    </div>
+    <div class="modal-body">
+      <p style="color:var(--gray-500);font-size:.9rem;margin-bottom:14px;">Nhập mật khẩu để chỉnh sửa thông tin CV của bạn.</p>
+      <label style="font-weight:600;font-size:.85rem;color:var(--gray-700);">Mật khẩu</label>
+      <input type="password" id="adminPass" placeholder="Nhập mật khẩu..." onkeydown="if(event.key==='Enter')doLogin()"/>
+      <p id="loginErr" style="color:#dc2626;font-size:.82rem;margin-top:8px;display:none;">Mật khẩu không đúng. Thử lại!</p>
+    </div>
+    <div class="modal-footer">
+      <button class="modal-footer button btn-cancel" onclick="closeLogin()">Hủy</button>
+      <button class="btn-login-submit" onclick="doLogin()">Đăng nhập</button>
+    </div>
+  </div>
+</div>
+
+<!-- ADMIN PANEL -->
+<div id="adminPanel">
+  <div class="ap-header">
+    <h2><i class="fa fa-sliders" style="margin-right:8px;"></i>Trang quản trị – Bùi Khả Hân CV</h2>
+    <div class="ap-header-btns">
+      <button class="ap-btn-save" onclick="saveAll()"><i class="fa fa-save"></i> Lưu tất cả</button>
+      <button class="ap-btn-close" onclick="closeAdmin()"><i class="fa fa-times"></i> Đóng</button>
+    </div>
+  </div>
+  <div class="ap-body">
+    <div class="ap-tabs">
+      <button class="ap-tab active" onclick="switchTab('general',this)">Thông tin chung</button>
+      <button class="ap-tab" onclick="switchTab('avatar',this)">Ảnh đại diện</button>
+      <button class="ap-tab" onclick="switchTab('timeline',this)">Hành trình</button>
+      <button class="ap-tab" onclick="switchTab('skills',this)">Kỹ năng</button>
+      <button class="ap-tab" onclick="switchTab('projects',this)">Dự án</button>
+      <button class="ap-tab" onclick="switchTab('certs',this)">Chứng chỉ</button>
+      <button class="ap-tab" onclick="switchTab('contact',this)">Liên hệ</button>
+    </div>
+
+    <!-- TAB: GENERAL -->
+    <div class="ap-section active" id="ap-general">
+      <div class="ap-card">
+        <h4>Thông tin Hero (Trang chủ)</h4>
+        <div class="ap-field"><label>Tên đầy đủ</label><input id="ap_name" type="text"/></div>
+        <div class="ap-field"><label>Tiêu đề nghề nghiệp (typewriter, cách nhau dấu |)</label><input id="ap_titles" type="text"/></div>
+        <div class="ap-field"><label>Bio ngắn (Hero)</label><textarea id="ap_bio"></textarea></div>
+      </div>
+      <div class="ap-card">
+        <h4>Mạng xã hội</h4>
+        <div class="ap-field-row">
+          <div class="ap-field"><label><i class="fab fa-linkedin"></i> LinkedIn URL</label><input id="ap_linkedin" type="text" placeholder="https://linkedin.com/in/..."/></div>
+          <div class="ap-field"><label><i class="fab fa-github"></i> GitHub URL</label><input id="ap_github" type="text" placeholder="https://github.com/..."/></div>
+        </div>
+        <div class="ap-field-row">
+          <div class="ap-field"><label><i class="fab fa-facebook"></i> Facebook URL</label><input id="ap_facebook" type="text" placeholder="https://facebook.com/..."/></div>
+          <div class="ap-field"><label><i class="fa fa-envelope"></i> Email (mailto)</label><input id="ap_emailSocial" type="text" placeholder="mailto:email@gmail.com"/></div>
+        </div>
+        <div class="ap-field"><label>Link tải CV (PDF)</label><input id="ap_cvLink" type="text" placeholder="https://drive.google.com/..."/></div>
+      </div>
+      <div class="ap-card">
+        <h4>Giới thiệu chi tiết (About)</h4>
+        <div class="ap-field"><label>Nội dung đoạn giới thiệu</label><textarea id="ap_aboutText"></textarea></div>
+        <div class="ap-field-row">
+          <div class="ap-field"><label>Số huy hiệu (vd: 3+)</label><input id="ap_badgeNum" type="text"/></div>
+          <div class="ap-field"><label>Nhãn huy hiệu</label><input id="ap_badgeLabel" type="text"/></div>
+        </div>
+        <h4 style="margin-top:16px;margin-bottom:12px;">Thống kê (3 ô số)</h4>
+        <div id="ap_statsFields"></div>
+        <button class="btn-add-item" onclick="addStatField()"><i class="fa fa-plus"></i> Thêm thống kê</button>
+      </div>
+      <div class="ap-card">
+        <h4>Footer</h4>
+        <div class="ap-field"><label>Câu trích dẫn yêu thích</label><input id="ap_quote" type="text"/></div>
+      </div>
+    </div>
+
+    <!-- TAB: AVATAR -->
+    <div class="ap-section" id="ap-avatar">
+      <div class="ap-card">
+        <h4>Ảnh đại diện</h4>
+        <div class="ap-avatar-wrap">
+          <img id="ap_avatarPreview" class="ap-avatar-preview" src="assets/avatar.jpg" alt="Preview"/>
+          <div class="ap-avatar-actions">
+            <p style="font-size:.85rem;color:var(--gray-500);margin-bottom:8px;">Chọn ảnh từ máy tính của bạn (JPG, PNG, WEBP)</p>
+            <label class="btn-upload"><i class="fa fa-upload"></i> Chọn ảnh
+              <input type="file" id="avatarFileInput" accept="image/*" style="display:none;" onchange="previewAvatar(event)"/>
+            </label>
+            <p id="avatarNote" style="font-size:.78rem;color:var(--gray-500);margin-top:8px;"></p>
+          </div>
+        </div>
+        <p style="margin-top:16px;font-size:.83rem;color:var(--gray-500);">
+          <i class="fa fa-info-circle" style="color:var(--blue-main)"></i>
+          Ảnh sẽ được lưu vào <code>localStorage</code> (base64) và tự động hiển thị mỗi khi mở trang.
+          Ảnh tốt nhất: tỉ lệ 1:1, dung lượng &lt; 500KB.
+        </p>
+      </div>
+    </div>
+
+    <!-- TAB: TIMELINE -->
+    <div class="ap-section" id="ap-timeline">
+      <div class="ap-card">
+        <h4>Các cột mốc hành trình</h4>
+        <div id="ap_timelineItems"></div>
+        <button class="btn-add-item" onclick="addTimelineItem()"><i class="fa fa-plus"></i> Thêm cột mốc</button>
+      </div>
+    </div>
+
+    <!-- TAB: SKILLS -->
+    <div class="ap-section" id="ap-skills">
+      <div class="ap-card">
+        <h4>Danh sách kỹ năng</h4>
+        <div id="ap_skillItems"></div>
+        <button class="btn-add-item" onclick="addSkillItem()"><i class="fa fa-plus"></i> Thêm kỹ năng</button>
+      </div>
+    </div>
+
+    <!-- TAB: PROJECTS -->
+    <div class="ap-section" id="ap-projects">
+      <div class="ap-card">
+        <h4>Danh sách dự án</h4>
+        <div id="ap_projItems"></div>
+        <button class="btn-add-item" onclick="addProjItem()"><i class="fa fa-plus"></i> Thêm dự án</button>
+      </div>
+    </div>
+
+    <!-- TAB: CERTS -->
+    <div class="ap-section" id="ap-certs">
+      <div class="ap-card">
+        <h4>Chứng chỉ & Giải thưởng</h4>
+        <div id="ap_certItems"></div>
+        <button class="btn-add-item" onclick="addCertItem()"><i class="fa fa-plus"></i> Thêm chứng chỉ</button>
+      </div>
+    </div>
+
+    <!-- TAB: CONTACT -->
+    <div class="ap-section" id="ap-contact">
+      <div class="ap-card">
+        <h4>Thông tin liên hệ</h4>
+        <div id="ap_contactItems"></div>
+        <button class="btn-add-item" onclick="addContactItem()"><i class="fa fa-plus"></i> Thêm mục liên hệ</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+/* =====================================================
+   DATA – Chỉnh sửa ở đây hoặc qua trang Admin
+   ===================================================== */
+const DEFAULT_DATA = {
+  name: "Bùi Khả Hân",
+  titles: ["Sinh viên đam mê học hỏi", "Người yêu thích sáng tạo", "Tương lai tươi sáng 🌟"],
+  bio: "Sinh viên năng động với niềm đam mê học hỏi và khám phá. Luôn nỗ lực không ngừng để mang lại giá trị tốt nhất trong mọi công việc và cuộc sống.",
+  aboutText: "Tôi là Bùi Khả Hân, một sinh viên năng động với niềm đam mê học hỏi và khám phá những điều mới. Tôi luôn hướng đến sự phát triển toàn diện cả về chuyên môn lẫn kỹ năng mềm. Với tư duy cầu tiến và thái độ tích cực, tôi không ngừng tìm kiếm cơ hội để học hỏi và đóng góp cho cộng đồng.",
+  badgeNum: "3+",
+  badgeLabel: "Năm học tập",
+  quote: "\"Hành trình ngàn dặm bắt đầu từ một bước chân.\"",
+  cvLink: "#",
+  socials: [
+    { icon: "fab fa-linkedin", url: "#", label: "LinkedIn" },
+    { icon: "fab fa-github",   url: "#", label: "GitHub"   },
+    { icon: "fab fa-facebook", url: "#", label: "Facebook" },
+    { icon: "fa fa-envelope",  url: "mailto:bkhan@email.com", label: "Email" }
+  ],
+  stats: [
+    { num: "3+",  label: "Năm học tập"        },
+    { num: "10+", label: "Dự án hoàn thành"   },
+    { num: "5+",  label: "Chứng chỉ đạt được" }
+  ],
+  timeline: [
+    { year: "2024", cat: "education", title: "Nhập học Đại học", org: "Trường Đại học...", desc: "Bắt đầu hành trình đại học với ngành học yêu thích." },
+    { year: "2023", cat: "award",     title: "Giải Ba học sinh giỏi tỉnh", org: "Sở GD&ĐT...", desc: "Đạt giải Ba môn... cấp tỉnh." },
+    { year: "2022", cat: "activity",  title: "Tham gia CLB...", org: "Trường THPT...", desc: "Hoạt động trong câu lạc bộ và phát triển kỹ năng." },
+    { year: "2021", cat: "education", title: "Vào cấp 3 THPT", org: "Trường THPT...", desc: "Bắt đầu giai đoạn học tập mới với nhiều thách thức." }
+  ],
+  skills: [
+    { cat: "Kỹ năng mềm", name: "Giao tiếp",         pct: 85 },
+    { cat: "Kỹ năng mềm", name: "Làm việc nhóm",      pct: 90 },
+    { cat: "Kỹ năng mềm", name: "Giải quyết vấn đề",  pct: 80 },
+    { cat: "Kỹ năng mềm", name: "Quản lý thời gian",  pct: 75 },
+    { cat: "Chuyên môn",  name: "Microsoft Office",   pct: 85 },
+    { cat: "Chuyên môn",  name: "Tiếng Anh",          pct: 70 },
+    { cat: "Chuyên môn",  name: "Phân tích dữ liệu",  pct: 65 },
+    { cat: "Công cụ",     name: "Canva",              pct: 80 },
+    { cat: "Công cụ",     name: "Figma",              pct: 60 },
+    { cat: "Công cụ",     name: "Google Workspace",   pct: 90 }
+  ],
+  projects: [
+    {
+      cat: "Học tập",
+      title: "Đồ án môn học",
+      desc: "Dự án nghiên cứu và trình bày về chủ đề chuyên môn của ngành học.",
+      tags: ["Nghiên cứu", "Thuyết trình", "Word"],
+      demoUrl: "#", codeUrl: "#", emoji: "📚"
+    },
+    {
+      cat: "Sáng tạo",
+      title: "Thiết kế Poster sự kiện",
+      desc: "Thiết kế poster quảng bá sự kiện cho câu lạc bộ trường học.",
+      tags: ["Canva", "Sáng tạo", "Design"],
+      demoUrl: "#", codeUrl: "#", emoji: "🎨"
+    },
+    {
+      cat: "Cộng đồng",
+      title: "Dự án tình nguyện",
+      desc: "Tham gia tổ chức và triển khai chương trình tình nguyện tại địa phương.",
+      tags: ["Tổ chức", "Teamwork", "Leadership"],
+      demoUrl: "#", codeUrl: "#", emoji: "🌱"
+    }
+  ],
+  certs: [
+    { icon: "fa fa-graduation-cap", name: "Bằng tốt nghiệp THPT",         org: "Sở GD&ĐT",          date: "2024" },
+    { icon: "fa fa-certificate",    name: "Chứng chỉ Tin học Cơ bản",      org: "Trung tâm đào tạo", date: "2023" },
+    { icon: "fa fa-language",       name: "Chứng chỉ Tiếng Anh",           org: "IDP / British Council", date: "2023" },
+    { icon: "fa fa-medal",          name: "Giải thưởng Học sinh Tiêu biểu", org: "Trường THPT",       date: "2023" }
+  ],
+  contact: [
+    { icon: "fa fa-envelope",   label: "Email",       val: "bkhan@email.com"     },
+    { icon: "fa fa-phone",      label: "Điện thoại",  val: "0901 234 567"        },
+    { icon: "fa fa-map-marker", label: "Địa chỉ",     val: "Việt Nam"            },
+    { icon: "fab fa-facebook",  label: "Facebook",    val: "facebook.com/bkhan"  }
+  ]
+};
+
+/* ===================================================== */
+let cvData = {};
+const ADMIN_PASS = "admin123"; // ← Đổi mật khẩu tại đây!
+/* ===================================================== */
+
+function loadData() {
+  try {
+    const saved = localStorage.getItem('cvData_bkhan');
+    if (saved) { cvData = JSON.parse(saved); } else { cvData = JSON.parse(JSON.stringify(DEFAULT_DATA)); }
+  } catch(e) { cvData = JSON.parse(JSON.stringify(DEFAULT_DATA)); }
+}
+
+function saveData() {
+  localStorage.setItem('cvData_bkhan', JSON.stringify(cvData));
+}
+
+/* ===== RENDER FUNCTIONS ===== */
+function render() {
+  const d = cvData;
+
+  // Navbar
+  document.getElementById('navBrand').textContent = d.name;
+  document.getElementById('navDownloadCV').href = d.cvLink || '#';
+
+  // Hero
+  const savedAvatar = localStorage.getItem('cvAvatar_bkhan');
+  if (savedAvatar) {
+    document.getElementById('heroImg').src = savedAvatar;
+    document.getElementById('aboutImg').src = savedAvatar;
+  }
+  document.getElementById('heroName').textContent = d.name;
+  document.getElementById('heroBio').textContent = d.bio;
+  startTypewriter(d.titles || []);
+
+  // Socials
+  const sc = document.getElementById('heroSocials');
+  sc.innerHTML = (d.socials||[]).map(s =>
+    `<a href="${s.url}" title="${s.label}" target="_blank"><i class="${s.icon}"></i></a>`
+  ).join('');
+
+  // About
+  document.getElementById('aboutText').textContent = d.aboutText;
+  document.getElementById('badgeNum').textContent   = d.badgeNum;
+  document.getElementById('badgeLabel').textContent = d.badgeLabel;
+
+  const statsEl = document.getElementById('aboutStats');
+  statsEl.innerHTML = (d.stats||[]).map(s =>
+    `<div class="stat-card"><div class="num">${s.num}</div><div class="label">${s.label}</div></div>`
+  ).join('');
+
+  // Timeline
+  renderTimeline('all');
+
+  // Skills
+  renderSkills('all');
+
+  // Projects
+  renderProjects('all');
+
+  // Certs
+  const cg = document.getElementById('certsGrid');
+  cg.innerHTML = (d.certs||[]).map(c =>
+    `<div class="cert-card">
+       <div class="cert-icon"><i class="${c.icon}"></i></div>
+       <div class="cert-info">
+         <div class="cert-name">${c.name}</div>
+         <div class="cert-org">${c.org}</div>
+         <div class="cert-date">${c.date}</div>
+       </div>
+     </div>`
+  ).join('');
+
+  // Contact
+  const cl = document.getElementById('contactInfoList');
+  cl.innerHTML = (d.contact||[]).map(c =>
+    `<div class="contact-info-item">
+       <div class="ci-icon"><i class="${c.icon}"></i></div>
+       <div><div class="ci-label">${c.label}</div><div class="ci-val">${c.val}</div></div>
+     </div>`
+  ).join('');
+
+  // Footer
+  document.getElementById('footerName').textContent = d.name;
+  document.getElementById('footerQuote').textContent = d.quote;
+}
+
+function renderTimeline(filter) {
+  const d = cvData;
+  const cats = [...new Set((d.timeline||[]).map(t=>t.cat))];
+  const filtersEl = document.getElementById('timelineFilters');
+  filtersEl.innerHTML = [
+    `<button class="tl-filter ${filter==='all'?'active':''}" onclick="renderTimeline('all')">Tất cả</button>`,
+    ...cats.map(c => `<button class="tl-filter ${filter===c?'active':''}" onclick="renderTimeline('${c}')">${catLabel(c)}</button>`)
+  ].join('');
+
+  const items = filter === 'all' ? d.timeline : d.timeline.filter(t=>t.cat===filter);
+  document.getElementById('timelineList').innerHTML = items.map(t =>
+    `<div class="tl-item">
+       <div class="tl-dot"></div>
+       <div class="tl-card">
+         <div class="tl-meta">
+           <span class="tl-year">${t.year}</span>
+           <span class="tl-cat cat-${t.cat}">${catLabel(t.cat)}</span>
+         </div>
+         <div class="tl-title">${t.title}</div>
+         <div class="tl-org">${t.org}</div>
+         <div class="tl-desc">${t.desc}</div>
+       </div>
+     </div>`
+  ).join('');
+}
+
+function catLabel(c) {
+  return { education:'Học vấn', work:'Sự nghiệp', award:'Giải thưởng', activity:'Hoạt động' }[c] || c;
+}
+
+function renderSkills(tab) {
+  const d = cvData;
+  const cats = [...new Set((d.skills||[]).map(s=>s.cat))];
+  const tabsEl = document.getElementById('skillsTabs');
+  tabsEl.innerHTML = [
+    `<button class="sk-tab ${tab==='all'?'active':''}" onclick="renderSkills('all')">Tất cả</button>`,
+    ...cats.map(c => `<button class="sk-tab ${tab===c?'active':''}" onclick="renderSkills('${c}')">${c}</button>`)
+  ].join('');
+
+  const items = tab === 'all' ? d.skills : d.skills.filter(s=>s.cat===tab);
+  const grid = document.getElementById('skillsGrid');
+  grid.innerHTML = items.map(s =>
+    `<div class="skill-card">
+       <div class="skill-header">
+         <span class="skill-name">${s.name}</span>
+         <span class="skill-pct">${s.pct}%</span>
+       </div>
+       <div class="skill-bar"><div class="skill-fill" data-pct="${s.pct}"></div></div>
+     </div>`
+  ).join('');
+
+  setTimeout(() => {
+    grid.querySelectorAll('.skill-fill').forEach(el => {
+      el.style.width = el.dataset.pct + '%';
+    });
+  }, 100);
+}
+
+function renderProjects(filter) {
+  const d = cvData;
+  const cats = [...new Set((d.projects||[]).map(p=>p.cat))];
+  const filtersEl = document.getElementById('projFilters');
+  filtersEl.innerHTML = [
+    `<button class="proj-filter ${filter==='all'?'active':''}" onclick="renderProjects('all')">Tất cả</button>`,
+    ...cats.map(c => `<button class="proj-filter ${filter===c?'active':''}" onclick="renderProjects('${c}')">${c}</button>`)
+  ].join('');
+
+  const items = filter === 'all' ? d.projects : d.projects.filter(p=>p.cat===filter);
+  document.getElementById('projectsGrid').innerHTML = items.map(p =>
+    `<div class="proj-card">
+       <div class="proj-thumb">${p.imgSrc ? `<img src="${p.imgSrc}" alt="${p.title}"/>` : `<span>${p.emoji||'📁'}</span>`}</div>
+       <div class="proj-body">
+         <div class="proj-cat">${p.cat}</div>
+         <div class="proj-title">${p.title}</div>
+         <div class="proj-desc">${p.desc}</div>
+         <div class="proj-tags">${(p.tags||[]).map(t=>`<span class="proj-tag">${t}</span>`).join('')}</div>
+         <div class="proj-links">
+           <a class="link-demo" href="${p.demoUrl||'#'}" target="_blank"><i class="fa fa-external-link"></i> Demo</a>
+           <a class="link-code" href="${p.codeUrl||'#'}" target="_blank"><i class="fab fa-github"></i> Code</a>
+         </div>
+       </div>
+     </div>`
+  ).join('');
+}
+
+/* ===== TYPEWRITER ===== */
+let twIndex = 0, twCharIndex = 0, twDeleting = false, twTimer;
+function startTypewriter(titles) {
+  clearTimeout(twTimer);
+  const el = document.getElementById('typewriterEl');
+  if (!titles || !titles.length) { el.textContent = ''; return; }
+  function type() {
+    const cur = titles[twIndex % titles.length];
+    if (!twDeleting) {
+      el.textContent = cur.slice(0, ++twCharIndex);
+      if (twCharIndex === cur.length) { twDeleting = true; twTimer = setTimeout(type, 1800); return; }
+    } else {
+      el.textContent = cur.slice(0, --twCharIndex);
+      if (twCharIndex === 0) { twDeleting = false; twIndex++; }
+    }
+    twTimer = setTimeout(type, twDeleting ? 60 : 90);
+  }
+  twIndex = 0; twCharIndex = 0; twDeleting = false;
+  type();
+}
+
+/* ===== NAVBAR ===== */
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
+});
+document.getElementById('hamburger').onclick = () => {
+  document.getElementById('navLinks').classList.toggle('open');
+};
+
+/* ===== ADMIN LOGIN ===== */
+document.getElementById('adminFab').onclick = () => {
+  document.getElementById('loginModal').classList.add('open');
+  setTimeout(() => document.getElementById('adminPass').focus(), 100);
+};
+function closeLogin() {
+  document.getElementById('loginModal').classList.remove('open');
+  document.getElementById('adminPass').value = '';
+  document.getElementById('loginErr').style.display = 'none';
+}
+function doLogin() {
+  const p = document.getElementById('adminPass').value;
+  if (p === ADMIN_PASS) {
+    closeLogin();
+    openAdmin();
+  } else {
+    document.getElementById('loginErr').style.display = 'block';
+  }
+}
+
+/* ===== ADMIN PANEL ===== */
+function openAdmin() {
+  document.getElementById('adminPanel').style.display = 'block';
+  document.body.style.overflow = 'hidden';
+  populateAdmin();
+}
+function closeAdmin() {
+  document.getElementById('adminPanel').style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+function switchTab(name, btn) {
+  document.querySelectorAll('.ap-section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.ap-tab').forEach(b => b.classList.remove('active'));
+  document.getElementById('ap-' + name).classList.add('active');
+  btn.classList.add('active');
+}
+
+function populateAdmin() {
+  const d = cvData;
+  document.getElementById('ap_name').value       = d.name || '';
+  document.getElementById('ap_titles').value     = (d.titles||[]).join('|');
+  document.getElementById('ap_bio').value        = d.bio || '';
+  document.getElementById('ap_aboutText').value  = d.aboutText || '';
+  document.getElementById('ap_badgeNum').value   = d.badgeNum || '';
+  document.getElementById('ap_badgeLabel').value = d.badgeLabel || '';
+  document.getElementById('ap_quote').value      = d.quote || '';
+  document.getElementById('ap_cvLink').value     = d.cvLink || '';
+  // Socials
+  document.getElementById('ap_linkedin').value   = (d.socials||[]).find(s=>s.label==='LinkedIn')?.url || '';
+  document.getElementById('ap_github').value     = (d.socials||[]).find(s=>s.label==='GitHub')?.url || '';
+  document.getElementById('ap_facebook').value   = (d.socials||[]).find(s=>s.label==='Facebook')?.url || '';
+  document.getElementById('ap_emailSocial').value= (d.socials||[]).find(s=>s.label==='Email')?.url || '';
+
+  // Stats
+  renderStatsFields(d.stats || []);
+
+  // Timeline
+  renderTimelineAdmin(d.timeline || []);
+
+  // Skills
+  renderSkillsAdmin(d.skills || []);
+
+  // Projects
+  renderProjectsAdmin(d.projects || []);
+
+  // Certs
+  renderCertsAdmin(d.certs || []);
+
+  // Contact
+  renderContactAdmin(d.contact || []);
+
+  // Avatar
+  const savedAvatar = localStorage.getItem('cvAvatar_bkhan');
+  if (savedAvatar) document.getElementById('ap_avatarPreview').src = savedAvatar;
+}
+
+/* ----- STATS FIELDS ----- */
+function renderStatsFields(stats) {
+  const c = document.getElementById('ap_statsFields');
+  c.innerHTML = stats.map((s,i) =>
+    `<div class="ap-list-item" id="statItem_${i}">
+       <div class="ap-field-row">
+         <div class="ap-field"><label>Số / Giá trị</label><input class="stat-num" value="${s.num}"/></div>
+         <div class="ap-field"><label>Nhãn</label><input class="stat-label-inp" value="${s.label}"/></div>
+       </div>
+       <button class="btn-remove" onclick="removeStatField(${i})"><i class="fa fa-trash"></i> Xóa</button>
+     </div>`
+  ).join('');
+}
+function addStatField() {
+  cvData.stats = cvData.stats || [];
+  cvData.stats.push({ num: '0+', label: 'Nhãn mới' });
+  renderStatsFields(cvData.stats);
+}
+function removeStatField(i) {
+  cvData.stats.splice(i, 1);
+  renderStatsFields(cvData.stats);
+}
+function collectStats() {
+  const items = document.querySelectorAll('#ap_statsFields .ap-list-item');
+  return Array.from(items).map(item => ({
+    num:   item.querySelector('.stat-num').value,
+    label: item.querySelector('.stat-label-inp').value
+  }));
+}
+
+/* ----- TIMELINE ADMIN ----- */
+function renderTimelineAdmin(items) {
+  const c = document.getElementById('ap_timelineItems');
+  c.innerHTML = items.map((t,i) =>
+    `<div class="ap-list-item">
+       <div class="ap-field-row">
+         <div class="ap-field"><label>Năm</label><input class="tl-year-i" value="${t.year}"/></div>
+         <div class="ap-field"><label>Danh mục</label>
+           <select class="tl-cat-i">
+             ${['education','work','award','activity'].map(c=>`<option value="${c}" ${t.cat===c?'selected':''}>${catLabel(c)}</option>`).join('')}
+           </select>
+         </div>
+       </div>
+       <div class="ap-field"><label>Tiêu đề</label><input class="tl-title-i" value="${t.title}"/></div>
+       <div class="ap-field"><label>Tổ chức / Trường</label><input class="tl-org-i" value="${t.org}"/></div>
+       <div class="ap-field"><label>Mô tả</label><textarea class="tl-desc-i">${t.desc}</textarea></div>
+       <button class="btn-remove" onclick="removeTimelineItem(${i})"><i class="fa fa-trash"></i> Xóa</button>
+     </div>`
+  ).join('');
+}
+function addTimelineItem() {
+  cvData.timeline.push({ year: new Date().getFullYear().toString(), cat: 'education', title: 'Cột mốc mới', org: '', desc: '' });
+  renderTimelineAdmin(cvData.timeline);
+}
+function removeTimelineItem(i) { cvData.timeline.splice(i,1); renderTimelineAdmin(cvData.timeline); }
+function collectTimeline() {
+  return Array.from(document.querySelectorAll('#ap_timelineItems .ap-list-item')).map(el => ({
+    year:  el.querySelector('.tl-year-i').value,
+    cat:   el.querySelector('.tl-cat-i').value,
+    title: el.querySelector('.tl-title-i').value,
+    org:   el.querySelector('.tl-org-i').value,
+    desc:  el.querySelector('.tl-desc-i').value
+  }));
+}
+
+/* ----- SKILLS ADMIN ----- */
+function renderSkillsAdmin(items) {
+  const c = document.getElementById('ap_skillItems');
+  c.innerHTML = items.map((s,i) =>
+    `<div class="ap-list-item">
+       <div class="ap-field-row">
+         <div class="ap-field"><label>Tên kỹ năng</label><input class="sk-name-i" value="${s.name}"/></div>
+         <div class="ap-field"><label>Danh mục</label><input class="sk-cat-i" value="${s.cat}"/></div>
+       </div>
+       <div class="ap-field">
+         <label>Phần trăm thành thạo: <span id="sk_pct_${i}">${s.pct}</span>%</label>
+         <input type="range" min="0" max="100" value="${s.pct}" class="sk-pct-i" oninput="document.getElementById('sk_pct_${i}').textContent=this.value"/>
+       </div>
+       <button class="btn-remove" onclick="removeSkillItem(${i})"><i class="fa fa-trash"></i> Xóa</button>
+     </div>`
+  ).join('');
+}
+function addSkillItem() { cvData.skills.push({ cat:'Chuyên môn', name:'Kỹ năng mới', pct:70 }); renderSkillsAdmin(cvData.skills); }
+function removeSkillItem(i) { cvData.skills.splice(i,1); renderSkillsAdmin(cvData.skills); }
+function collectSkills() {
+  return Array.from(document.querySelectorAll('#ap_skillItems .ap-list-item')).map(el => ({
+    name: el.querySelector('.sk-name-i').value,
+    cat:  el.querySelector('.sk-cat-i').value,
+    pct:  parseInt(el.querySelector('.sk-pct-i').value)
+  }));
+}
+
+/* ----- PROJECTS ADMIN ----- */
+function renderProjectsAdmin(items) {
+  const c = document.getElementById('ap_projItems');
+  c.innerHTML = items.map((p,i) =>
+    `<div class="ap-list-item">
+       <div class="ap-field-row">
+         <div class="ap-field"><label>Tên dự án</label><input class="pr-title-i" value="${p.title}"/></div>
+         <div class="ap-field"><label>Danh mục</label><input class="pr-cat-i" value="${p.cat}"/></div>
+       </div>
+       <div class="ap-field"><label>Mô tả</label><textarea class="pr-desc-i">${p.desc}</textarea></div>
+       <div class="ap-field"><label>Tags (cách nhau dấu phẩy)</label><input class="pr-tags-i" value="${(p.tags||[]).join(',')}"/></div>
+       <div class="ap-field"><label>Emoji / Icon (vd: 📁)</label><input class="pr-emoji-i" value="${p.emoji||'📁'}"/></div>
+       <div class="ap-field-row">
+         <div class="ap-field"><label>Link Demo</label><input class="pr-demo-i" value="${p.demoUrl||''}"/></div>
+         <div class="ap-field"><label>Link GitHub</label><input class="pr-code-i" value="${p.codeUrl||''}"/></div>
+       </div>
+       <div class="ap-field">
+         <label>Hình ảnh dự án</label>
+         <div style="display:flex;gap:12px;align-items:center;margin-top:6px;">
+           ${p.imgSrc ? `<img src="${p.imgSrc}" style="width:80px;height:60px;object-fit:cover;border-radius:8px;border:2px solid var(--blue-light)"/>` : `<div style="width:80px;height:60px;background:var(--blue-pale);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;">${p.emoji||'📁'}</div>`}
+           <label class="btn-upload" style="font-size:.8rem;padding:7px 14px;">
+             <i class="fa fa-upload"></i> Chọn ảnh
+             <input type="file" accept="image/*" style="display:none;" onchange="handleProjImg(event,${i})"/>
+           </label>
+         </div>
+       </div>
+       <button class="btn-remove" onclick="removeProjItem(${i})"><i class="fa fa-trash"></i> Xóa</button>
+     </div>`
+  ).join('');
+}
+function handleProjImg(ev, i) {
+  const f = ev.target.files[0]; if (!f) return;
+  const r = new FileReader();
+  r.onload = e => { cvData.projects[i].imgSrc = e.target.result; renderProjectsAdmin(cvData.projects); };
+  r.readAsDataURL(f);
+}
+function addProjItem() { cvData.projects.push({ cat:'Dự án', title:'Dự án mới', desc:'Mô tả dự án', tags:[], emoji:'📁', demoUrl:'#', codeUrl:'#' }); renderProjectsAdmin(cvData.projects); }
+function removeProjItem(i) { cvData.projects.splice(i,1); renderProjectsAdmin(cvData.projects); }
+function collectProjects() {
+  return Array.from(document.querySelectorAll('#ap_projItems .ap-list-item')).map((el,i) => ({
+    title: el.querySelector('.pr-title-i').value,
+    cat:   el.querySelector('.pr-cat-i').value,
+    desc:  el.querySelector('.pr-desc-i').value,
+    tags:  el.querySelector('.pr-tags-i').value.split(',').map(t=>t.trim()).filter(Boolean),
+    emoji: el.querySelector('.pr-emoji-i').value,
+    demoUrl: el.querySelector('.pr-demo-i').value,
+    codeUrl: el.querySelector('.pr-code-i').value,
+    imgSrc: cvData.projects[i]?.imgSrc || ''
+  }));
+}
+
+/* ----- CERTS ADMIN ----- */
+function renderCertsAdmin(items) {
+  const c = document.getElementById('ap_certItems');
+  c.innerHTML = items.map((cert,i) =>
+    `<div class="ap-list-item">
+       <div class="ap-field-row">
+         <div class="ap-field"><label>Tên chứng chỉ</label><input class="cert-name-i" value="${cert.name}"/></div>
+         <div class="ap-field"><label>Tổ chức cấp</label><input class="cert-org-i" value="${cert.org}"/></div>
+       </div>
+       <div class="ap-field-row">
+         <div class="ap-field"><label>Năm / Ngày</label><input class="cert-date-i" value="${cert.date}"/></div>
+         <div class="ap-field"><label>Icon (Font Awesome class)</label><input class="cert-icon-i" value="${cert.icon}"/></div>
+       </div>
+       <button class="btn-remove" onclick="removeCertItem(${i})"><i class="fa fa-trash"></i> Xóa</button>
+     </div>`
+  ).join('');
+}
+function addCertItem() { cvData.certs.push({ icon:'fa fa-certificate', name:'Chứng chỉ mới', org:'', date:'' }); renderCertsAdmin(cvData.certs); }
+function removeCertItem(i) { cvData.certs.splice(i,1); renderCertsAdmin(cvData.certs); }
+function collectCerts() {
+  return Array.from(document.querySelectorAll('#ap_certItems .ap-list-item')).map(el => ({
+    name: el.querySelector('.cert-name-i').value,
+    org:  el.querySelector('.cert-org-i').value,
+    date: el.querySelector('.cert-date-i').value,
+    icon: el.querySelector('.cert-icon-i').value
+  }));
+}
+
+/* ----- CONTACT ADMIN ----- */
+function renderContactAdmin(items) {
+  const c = document.getElementById('ap_contactItems');
+  c.innerHTML = items.map((ct,i) =>
+    `<div class="ap-list-item">
+       <div class="ap-field-row">
+         <div class="ap-field"><label>Nhãn</label><input class="ct-label-i" value="${ct.label}"/></div>
+         <div class="ap-field"><label>Giá trị</label><input class="ct-val-i" value="${ct.val}"/></div>
+       </div>
+       <div class="ap-field"><label>Icon (FA class, vd: fa fa-envelope)</label><input class="ct-icon-i" value="${ct.icon}"/></div>
+       <button class="btn-remove" onclick="removeContactItem(${i})"><i class="fa fa-trash"></i> Xóa</button>
+     </div>`
+  ).join('');
+}
+function addContactItem() { cvData.contact.push({ icon:'fa fa-link', label:'Nhãn', val:'' }); renderContactAdmin(cvData.contact); }
+function removeContactItem(i) { cvData.contact.splice(i,1); renderContactAdmin(cvData.contact); }
+function collectContact() {
+  return Array.from(document.querySelectorAll('#ap_contactItems .ap-list-item')).map(el => ({
+    label: el.querySelector('.ct-label-i').value,
+    val:   el.querySelector('.ct-val-i').value,
+    icon:  el.querySelector('.ct-icon-i').value
+  }));
+}
+
+/* ===== AVATAR UPLOAD ===== */
+function previewAvatar(event) {
+  const f = event.target.files[0]; if (!f) return;
+  if (f.size > 2 * 1024 * 1024) {
+    document.getElementById('avatarNote').textContent = '⚠️ Ảnh quá lớn (>2MB), hãy chọn ảnh nhỏ hơn.';
+    return;
+  }
+  const r = new FileReader();
+  r.onload = e => {
+    const src = e.target.result;
+    document.getElementById('ap_avatarPreview').src = src;
+    localStorage.setItem('cvAvatar_bkhan', src);
+    document.getElementById('heroImg').src = src;
+    document.getElementById('aboutImg').src = src;
+    document.getElementById('avatarNote').textContent = '✅ Ảnh đã được lưu thành công!';
+  };
+  r.readAsDataURL(f);
+}
+
+/* ===== SAVE ALL ===== */
+function saveAll() {
+  const d = cvData;
+  d.name       = document.getElementById('ap_name').value;
+  d.titles     = document.getElementById('ap_titles').value.split('|').map(t=>t.trim()).filter(Boolean);
+  d.bio        = document.getElementById('ap_bio').value;
+  d.aboutText  = document.getElementById('ap_aboutText').value;
+  d.badgeNum   = document.getElementById('ap_badgeNum').value;
+  d.badgeLabel = document.getElementById('ap_badgeLabel').value;
+  d.quote      = document.getElementById('ap_quote').value;
+  d.cvLink     = document.getElementById('ap_cvLink').value;
+
+  const li = document.getElementById('ap_linkedin').value;
+  const gh = document.getElementById('ap_github').value;
+  const fb = document.getElementById('ap_facebook').value;
+  const em = document.getElementById('ap_emailSocial').value;
+  d.socials = [
+    { icon: 'fab fa-linkedin', url: li || '#', label: 'LinkedIn' },
+    { icon: 'fab fa-github',   url: gh || '#', label: 'GitHub'   },
+    { icon: 'fab fa-facebook', url: fb || '#', label: 'Facebook' },
+    { icon: 'fa fa-envelope',  url: em || '#', label: 'Email'    }
+  ];
+
+  d.stats    = collectStats();
+  d.timeline = collectTimeline();
+  d.skills   = collectSkills();
+  d.projects = collectProjects();
+  d.certs    = collectCerts();
+  d.contact  = collectContact();
+
+  saveData();
+  render();
+
+  // Toast
+  const t = document.createElement('div');
+  t.className = 'ap-success';
+  t.innerHTML = '<i class="fa fa-check-circle"></i> Đã lưu và cập nhật thành công!';
+  document.body.appendChild(t);
+  setTimeout(() => t.remove(), 3000);
+}
+
+/* ===== SCROLL ANIMATION ===== */
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; }
+  });
+}, { threshold: 0.1 });
+
+/* ===== INIT ===== */
+loadData();
+render();
+
+document.querySelectorAll('section').forEach(s => {
+  s.style.opacity = '0';
+  s.style.transform = 'translateY(20px)';
+  s.style.transition = 'opacity .6s ease, transform .6s ease';
+  obs.observe(s);
+});
+document.getElementById('hero').style.opacity='1';
+document.getElementById('hero').style.transform='none';
+</script>
+</body>
+</html>
